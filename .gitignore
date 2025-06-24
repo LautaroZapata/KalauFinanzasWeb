@@ -1,0 +1,21 @@
+# Dependencias de Node
+node_modules/
+
+# Logs de debug de Firebase
+firebase-debug.log
+
+# Archivos específicos de tu IDE (VSCode, WebStorm, etc)
+.vscode/
+.idea/
+
+# Archivos creados automáticamente
+.DS_Store
+
+# Caches
+.npm/
+.pnp/
+.pnp.js
+
+# Carga de build si la tuvieras
+dist/
+build/
