@@ -45,6 +45,41 @@ export function calcularMontos(data) {
 }
 
 
+
+// Esta función calcula los montos totales y pendientes para mostrar en pantalla DE LOS SERVICIOS CUSTOM
+export function calcularMontosCustom(data) {
+  const precioFinal = Number(data.precioFinal) || 0;
+  const transporte = Number(data.transporte) || 0;
+  const opcionPago = data.opcionPago;
+
+  let montoTotal = 0;
+  let pagoActual = 0;
+  let pagoRestante = 0;
+
+  if (opcionPago === "pagoParcial") {
+    // Si es pago parcial, el total es el doble del precio menos transporte
+    montoTotal = precioFinal * 2 - transporte;
+    pagoActual = precioFinal;
+    pagoRestante = montoTotal - pagoActual;
+  } else {
+    // Si es pago total, ya está todo pagado
+    montoTotal = precioFinal;
+    pagoActual = precioFinal;
+    pagoRestante = 0;
+  }
+
+  // Ajuste especial si el transporte es cero y el pago es parcial
+  if (transporte <= 0 && opcionPago === "pagoParcial") {
+    pagoRestante = precioFinal;
+  }
+
+  return {
+    montoTotal,
+    pagoActual,
+    pagoRestante
+  };
+}
+
 /**
  * Esta función carga y muestra los registros en el DOM.
  * Solo se debe ejecutar en modificar.html (donde existe el contenedor de registros).

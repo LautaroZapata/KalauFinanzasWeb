@@ -22,5 +22,21 @@ export async function guardarRegistro(datos) {
   }
 }
 
+// Esta la uso para los registros custom
+
+const registrosCustomCollection = collection(db, "registrosCustom");
+
+export async function guardarRegistroCustom(datos) {
+  try {
+    const docRef = await addDoc(registrosCustomCollection, datos);
+    console.log("Registro guardado con ID.", docRef.id);
+    return docRef.id;
+  } catch (error) {
+    console.error("Error guardando registro.", error);
+    throw error;
+  }
+}
+
+
 // Exportamos db y la referencia a la colección de registros
 export { db, registrosCollection };

@@ -1,5 +1,61 @@
 // calculos.js
 
+// Exporto la funcion CUSTOM de los calculos en el formulario
+
+// Función para calcular montos según tus reglas
+
+
+
+export function calcularDatosFormularioCustom({
+  montoCustom,
+  opcionPago,
+  descuento = 0,
+  transporte = 0,
+  pagoMatiasCustom = 0
+}) {
+  // Función para aplicar descuento porcentual
+  const aplicarDescuento = (precio, desc) => precio * (1 - desc / 100);
+
+  // Aplicamos descuento al monto base
+  const montoConDescuento = aplicarDescuento(montoCustom, descuento);
+
+  // Sumamos transporte para obtener el precio final
+  const precioFinal = montoConDescuento + transporte;
+
+  // Definimos factor de pago: total o parcial
+  const factorPago = opcionPago === "pagoTotal" ? 1 : 0.5;
+
+  // Lo que se paga hoy (total o 50%)
+  const montoPagadoHoy = precioFinal * factorPago;
+
+  // Pago a Lautaro según opción
+  let pagoLautaro;
+  if (opcionPago === "pagoTotal") {
+    pagoLautaro = montoPagadoHoy - pagoMatiasCustom;
+  } else {
+    pagoLautaro = montoPagadoHoy;
+  }
+
+  // Pago restante = precioFinal - pagado hoy
+  const pagoRestante = precioFinal - montoPagadoHoy;
+
+  return {
+    precioFinal,       // Total con descuento y transporte
+    montoPagadoHoy,    // Lo que se paga hoy
+    pagoLautaro,       // Lo que recibe Lautaro hoy
+    factorPago,
+    descuento,
+    transporte,
+    pagoRestante
+  };
+}
+
+
+
+
+
+
+
 // Exportamos la función para que pueda usarse desde otros archivos
 export function calcularDatosFormulario({ tipoVideo, opcionPago, descuento = 0, transporte = 0 }) {
 

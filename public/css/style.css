@@ -34,7 +34,7 @@ header {
 
 
 
-form#registroForm {
+form#registroForm, #registroCustomForm {
   background: #1e1e1e;
   padding: 2rem;
   border-radius: 5px;
@@ -42,7 +42,7 @@ form#registroForm {
   box-shadow: 0 0 10px rgba(25, 24, 24, 0.1);
 }
 
-form#registroForm label {
+form#registroForm label, #registroCustomForm label  {
   display: block;
   margin-bottom: 0.4rem;
   font-weight: 600;
@@ -50,10 +50,10 @@ form#registroForm label {
   color: #ccc;
 }
 
-form#registroForm input[type="text"],
-form#registroForm input[type="number"],
-form#registroForm input[type="date"],
-form#registroForm select {
+form#registroForm input[type="text"], #registroCustomForm input[type="text"],
+form#registroForm input[type="number"], #registroCustomForm input[type="number"],
+form#registroForm input[type="date"],  #registroCustomForm input[type="date"], 
+form#registroForm select, #registroCustomForm select  {
   width: 100%;
   padding: 0.5rem 0.75rem;
   margin-bottom: 1.2rem;
@@ -65,16 +65,16 @@ form#registroForm select {
   transition: border-color 0.3s ease;
 }
 
-form#registroForm input[type="text"]:focus,
-form#registroForm input[type="number"]:focus,
-form#registroForm input[type="date"]:focus,
-form#registroForm select:focus {
+form#registroForm input[type="text"]:focus, #registroCustomForm input[type="text"]:focus,  
+form#registroForm input[type="number"]:focus, #registroCustomForm input[type="number"]:focus,
+form#registroForm input[type="date"]:focus, #registroCustomForm input[type="date"]:focus,
+form#registroForm select:focus, #registroCustomForm select:focus {
   outline: none;
   border-color: #6b8de3;
   background-color: #3a3a3a;
 }
 
-form#registroForm button {
+form#registroForm button, #cambiarForm, #registroCustomForm button {
   width: 100%;
   padding: 0.5rem;
   background-color: mediumpurple;
@@ -170,4 +170,17 @@ b {
 }
 
 
+#cambiarForm{
+  height: 50px;
+  width: 300px;
+}
 
+
+.formOculto {
+  display: none;
+}
+
+
+.btnServicioCustom {
+  background-color: #000 !important;
+}
